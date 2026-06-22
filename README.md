@@ -1,73 +1,19 @@
-# React + TypeScript + Vite
+# Jyoti Engineering Web Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, full-stack web application developed for **Jyoti Engineering**[cite: 1]. This platform bridges an impactful, mobile-responsive digital storefront for industrial clients with a secure, cloud-managed administrative backend for real-time content operations[cite: 1].
 
-Currently, two official plugins are available:
+Built as a tailored solution to help scale their digital presence and streamline how they showcase their core services[cite: 1].
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Key Features
 
-## React Compiler
+*   **Dynamic Public Storefront:** A seamless, single-page customer journey featuring a responsive service catalog, "Why Choose Us" trust grid, and an interactive lead-capture form routed directly to corporate email[cite: 1].
+*   **Secured Admin Portal:** An isolated `/admin` gate with server-side validation to restrict access to authorized internal team members[cite: 1].
+*   **Central Operations Control:** An intuitive dashboard for the team to instantly add or remove showcased services without touching a line of code[cite: 1].
+*   **Automated Image Optimizer:** Automatically scales and converts massive field images down to ultra-lightweight formats before storing them to protect page loading speeds[cite: 1].
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+*   **Core Architecture:** Next.js, React, TypeScript[cite: 1]
+*   **Styling & UI:** Tailwind CSS (Optimized for mobile, tablet, and desktop monitors)[cite: 1]
+*   **Database & Storage:** Supabase Cloud Database & Storage[cite: 1]
+*   **Communication:** Secure server-side email protocols routed directly to corporate endpoints[cite: 1]
