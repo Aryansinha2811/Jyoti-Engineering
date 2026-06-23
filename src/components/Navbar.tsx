@@ -37,11 +37,11 @@ export default function Navbar() {
                         height={64}
                         className="h-14 w-14 object-contain lg:h-16 lg:w-16"
                     />
-                    <span className="hidden flex-col leading-tight sm:flex">
-                        <span className="text-base font-bold tracking-wide text-slate-800 lg:text-2xl" style={{ fontFamily: "'Canistel', sans-serif" }}>
+                    <span className="flex flex-col leading-tight">
+                        <span className="text-sm font-bold tracking-wide text-slate-800 sm:text-base lg:text-2xl" style={{ fontFamily: "'Canistel', sans-serif" }}>
                             JYOTI  ENGINEERING
                         </span>
-                        <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-amber-500" 
+                        <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-amber-500 sm:text-[11px]" 
                         style={{ fontFamily: "'Westford Modern Demo', sans-serif" }}
                         >
                             Precision &middot; Fabrication &middot; Reliability
@@ -55,7 +55,8 @@ export default function Navbar() {
                         <li key={link.href}>
                             <a
                                 href={link.href}
-                                className="text-sm font-medium text-slate-800 transition-colors hover:text-amber-500"
+                                className="text-lg font-medium text-slate-800 transition-colors hover:text-amber-500"
+                                style={{ fontFamily: "'Button', sans-serif" }}
                             >
                                 {link.label}
                             </a>
@@ -68,6 +69,7 @@ export default function Navbar() {
                     <a
                         href="#contact"
                         className="rounded-md bg-amber-500 px-5 py-2.5 text-sm font-semibold text-slate-900 shadow-sm transition-colors hover:bg-amber-400"
+                        style={{ fontFamily: "'Button', sans-serif" }}
                     >
                         Request a Quote
                     </a>
@@ -108,6 +110,7 @@ export default function Navbar() {
                                     href={link.href}
                                     onClick={() => setIsMenuOpen(false)}
                                     className="block rounded-md px-2 py-3 text-sm font-medium text-slate-100 hover:bg-white/5 hover:text-amber-400"
+                                    style={{ fontFamily: "'Button', sans-serif" }}
                                 >
                                     {link.label}
                                 </a>
@@ -118,6 +121,7 @@ export default function Navbar() {
                                 href="#contact"
                                 onClick={() => setIsMenuOpen(false)}
                                 className="block rounded-md bg-amber-500 px-4 py-3 text-center text-sm font-semibold text-slate-900 hover:bg-amber-400"
+                                style={{ fontFamily: "'Button', sans-serif" }}
                             >
                                 Request a Quote
                             </a>

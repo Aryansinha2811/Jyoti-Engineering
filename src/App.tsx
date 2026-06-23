@@ -1,5 +1,9 @@
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import Services from "./components/Services";
+import WhyChooseUs from "./components/WhyChooseUs";
+import Footer from "./components/Footer";
+import SquareUp from "./components/SquareUp";
 
 function App() {
   return (
@@ -21,6 +25,10 @@ function App() {
       />
       <Navbar />
       <Hero />
+      <Services />
+      <WhyChooseUs />
+      <Footer />
+      <SquareUp />
     </div>
   );
 }

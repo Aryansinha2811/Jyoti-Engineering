@@ -3,16 +3,32 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Westford Modern Demo';
-    src: url('./assets/fonts/WestfordModernDemo-Regular.otf') format('opentype');
+    font-family: 'Canistel';
+    src: url('./assets/fonts/Canistel.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
 }
 
 @font-face {
-    font-family: 'Canistel';
-    src: url('./assets/fonts/Canistel.ttf') format('truetype');
+    font-family: 'Heavitas';
+    src: url('./assets/fonts/Heavitas.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Button';
+    src: url('./assets/fonts/Button.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Paragraph';
+    src: url('./assets/fonts/Paragraph.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
