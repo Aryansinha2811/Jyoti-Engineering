@@ -1,4 +1,5 @@
 import { useState, type FormEvent } from "react";
+import emailjs from "@emailjs/browser";
 
 type FormState = {
     name: string;
@@ -18,6 +19,11 @@ const INITIAL_FORM: FormState = {
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_REGEX = /^[+]?[\d\s-]{10,15}$/;
+
+// EmailJS config — pulled from .env (Vite exposes vars prefixed with VITE_)
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
 
 function validate(form: FormState): FormErrors {
     const errors: FormErrors = {};
@@ -58,7 +64,7 @@ export default function Footer() {
     const [form, setForm] = useState<FormState>(INITIAL_FORM);
     const [errors, setErrors] = useState<FormErrors>({});
     const [touched, setTouched] = useState<Partial<Record<keyof FormState, boolean>>>({});
-    const [status, setStatus] = useState<"idle" | "success">("idle");
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
     const handleChange = (field: keyof FormState, value: string) => {
         const next = { ...form, [field]: value };
@@ -73,18 +79,37 @@ export default function Footer() {
         setErrors(validate(form));
     };
 
-    const handleSubmit = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         const nextErrors = validate(form);
         setErrors(nextErrors);
         setTouched({ name: true, email: true, phone: true, message: true });
 
-        if (Object.keys(nextErrors).length === 0) {
-            // Wire this up to your backend / email service of choice.
-            console.log("Lead submitted:", form);
+        if (Object.keys(nextErrors).length > 0) return;
+
+        setStatus("loading");
+
+        try {
+            await emailjs.send(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                {
+                    from_name: form.name,
+                    from_email: form.email,
+                    phone: form.phone,
+                    message: form.message,
+                },
+                { publicKey: EMAILJS_PUBLIC_KEY }
+            );
+
             setStatus("success");
             setForm(INITIAL_FORM);
             setTouched({});
+            window.alert("Email sent successfully! We'll be in touch shortly.");
+            setTimeout(() => setStatus("idle"), 5000);
+        } catch (err) {
+            console.error("EmailJS error:", err);
+            setStatus("error");
             setTimeout(() => setStatus("idle"), 5000);
         }
     };
@@ -193,15 +218,22 @@ export default function Footer() {
 
                             <button
                                 type="submit"
-                                className="w-full rounded-md bg-amber-500 px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 sm:w-auto sm:px-10"
+                                disabled={status === "loading"}
+                                className="w-full rounded-md bg-amber-500 px-6 py-3 text-sm font-semibold text-slate-900 transition-colors hover:bg-amber-400 disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto sm:px-10"
                                 style={{ fontFamily: "'Button', sans-serif" }}
                             >
-                                Submit Inquiry
+                                {status === "loading" ? "Sending..." : "Submit Inquiry"}
                             </button>
 
                             {status === "success" && (
                                 <p className="text-sm font-medium text-emerald-600">
                                     Thanks! Your inquiry has been received — we'll be in touch shortly.
+                                </p>
+                            )}
+
+                            {status === "error" && (
+                                <p className="text-sm font-medium text-red-500">
+                                    Something went wrong sending your inquiry. Please try again or call us directly.
                                 </p>
                             )}
                         </form>

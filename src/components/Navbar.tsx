@@ -3,7 +3,6 @@ import logo from "../assets/JE.png";
 
 const NAV_LINKS = [
     { label: "Home", href: "#home" },
-    { label: "About", href: "#about" },
     { label: "Services", href: "#services" },
     { label: "Why Choose Us", href: "#why-choose-us" },
     { label: "Contact", href: "#contact" },
@@ -23,8 +22,8 @@ export default function Navbar() {
     return (
         <header
             className={`fixed top-0 left-0 z-50 w-full transition-all duration-300 ${isScrolled
-                    ? "bg-white/90 backdrop-blur-md shadow-md shadow-slate-900/5"
-                    : "bg-transparent"
+                ? "bg-white/90 backdrop-blur-md shadow-md shadow-slate-900/5"
+                : "bg-transparent"
                 }`}
         >
             <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
@@ -35,14 +34,16 @@ export default function Navbar() {
                         alt="Jyoti Engineering"
                         width={64}
                         height={64}
-                        className="h-14 w-14 object-contain lg:h-16 lg:w-16"
+                        className="h-14 w-14 object-contain lg:h-22 lg:w-22"
                     />
                     <span className="flex flex-col leading-tight">
-                        <span className="text-sm font-bold tracking-wide text-slate-800 sm:text-base lg:text-2xl" style={{ fontFamily: "'Canistel', sans-serif" }}>
-                            JYOTI  ENGINEERING
+                        <span className="text-xl tracking-wide text-slate-800 sm:text-base lg:text-3xl" style={{ fontFamily: "'Canistel', sans-serif" }}>
+                            JYOTI <span className="text-amber-500">
+                                ENGINEERING
+                            </span>
                         </span>
-                        <span className="text-[9px] font-medium uppercase tracking-[0.18em] text-amber-500 sm:text-[11px]" 
-                        style={{ fontFamily: "'Westford Modern Demo', sans-serif" }}
+                        <span className="text-[7px] font-medium uppercase tracking-[0.18em] text-amber-500 sm:text-[10px]"
+                            style={{ fontFamily: "'Button', sans-serif" }}
                         >
                             Precision &middot; Fabrication &middot; Reliability
                         </span>
